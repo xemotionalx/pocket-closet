@@ -1,4 +1,4 @@
-import { AuthScreen } from "./src/screens/auth.screen";
+import { AuthScreen } from "./src/screens/AuthScreen/auth.screen";
 import "@tamagui/core/reset.css";
 
 import { TamaguiProvider } from "tamagui";
