@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-pocketcloset-staging-171817-authRole",
+      "UnauthRoleArn": "arn:aws:iam::074771268937:role/amplify-pocketcloset-staging-171817-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::074771268937:role/amplify-pocketcloset-staging-171817-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-pocketcloset-staging-171817-deployment",
+      "UnauthRoleName": "amplify-pocketcloset-staging-171817-unauthRole",
+      "StackName": "amplify-pocketcloset-staging-171817",
+      "StackId": "arn:aws:cloudformation:us-east-1:074771268937:stack/amplify-pocketcloset-staging-171817/9fe6dd00-8bb6-11ee-8352-0e9ca9fa04d7",
+      "AmplifyAppId": "d3b99emdb85cqs"
+    },
+    "categories": {
+      "auth": {
+        "pocketcloset": {}
+      }
+    }
+  }
+}
