@@ -8,6 +8,7 @@ export const AuthScreen = () => {
       <Input placeholder="email" width={200} />
       <Input placeholder="password" width={200} />
       <Button width={200}>log in</Button>
+      <Button width={200}>create account</Button>
     </SafeAreaView>
   );
 };
