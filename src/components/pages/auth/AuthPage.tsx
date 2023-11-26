@@ -3,6 +3,7 @@ import styles from "./auth.module.css";
 import { Button, Form, Input } from "tamagui";
 import { Controller, useForm } from "react-hook-form";
 import { signUp } from "@aws-amplify/auth";
+import { Link } from "expo-router";
 
 const isValidEmail = (email) =>
   // eslint-disable-next-line no-useless-escape
@@ -15,7 +16,7 @@ type FormDataType = {
   password: string;
 };
 
-export const AuthScreen = () => {
+export const AuthPage = () => {
   const {
     control,
     handleSubmit,
@@ -108,7 +109,7 @@ export const AuthScreen = () => {
       >
         create account
       </Button>
-      {/* <Button width={200}>create account</Button> */}
+      {/* <Link href="/closet">go to my closet</Link> */}
     </SafeAreaView>
   );
 };

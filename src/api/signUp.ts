@@ -24,3 +24,5 @@ async function handleSignUp({ password, email }: SignUpParameters) {
     console.log("error signing up:", error);
   }
 }
+
+export default handleSignUp;

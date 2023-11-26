@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "pocket-closet",
     "name": "pocket-closet",
     "slug": "pocket-closet",
     "version": "1.0.0",
