@@ -4,8 +4,9 @@ import { Controller, useForm } from "react-hook-form";
 
 import { isValidEmail } from "@utils/isValidEmail";
 
-import styles from "./sign-up.module.css";
 import { SignInParameters, handleSignIn } from "./handleSignIn";
+
+import styles from "./sign-in.module.css";
 
 export const SignIn = () => {
   const {

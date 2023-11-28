@@ -38,7 +38,7 @@ export const Confirmation = () => {
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <Input
-            placeholder="password"
+            placeholder="confirmation code"
             width={200}
             onBlur={onBlur}
             onChangeText={onChange}
