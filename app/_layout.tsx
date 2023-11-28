@@ -7,9 +7,9 @@ import { useEffect } from "react";
 import { useCustomFonts } from "../src/hooks/useCustomFonts";
 import { LogBox } from "react-native";
 import { Amplify } from "aws-amplify";
-import amplifyconfig from "../src/amplifyconfiguration.json";
+import awsExports from "../src/aws-exports";
 
-Amplify.configure(amplifyconfig);
+Amplify.configure(awsExports);
 
 SplashScreen.preventAutoHideAsync();
 

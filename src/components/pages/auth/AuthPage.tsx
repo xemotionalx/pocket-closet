@@ -4,6 +4,7 @@ import { Button, Form, Input } from "tamagui";
 import { Controller, useForm } from "react-hook-form";
 import { signUp } from "@aws-amplify/auth";
 import { Link } from "expo-router";
+import handleSignUp from "../../../api/signUp";
 
 const isValidEmail = (email) =>
   // eslint-disable-next-line no-useless-escape
@@ -30,6 +31,7 @@ export const AuthPage = () => {
 
   const onSubmit = (data: FormDataType) => {
     console.log(data);
+    handleSignUp({ password: data.password, email: data.email });
   };
 
   const handleEmailValidation = (email) => {

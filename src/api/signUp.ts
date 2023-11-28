@@ -1,4 +1,4 @@
-import { signUp } from "@aws-amplify/auth";
+import { Auth } from "aws-amplify";
 
 type SignUpParameters = {
   password: string;
@@ -7,19 +7,12 @@ type SignUpParameters = {
 
 async function handleSignUp({ password, email }: SignUpParameters) {
   try {
-    const { isSignUpComplete, userId, nextStep } = await signUp({
+    const response = await Auth.signUp({
       username: email,
       password,
-      options: {
-        userAttributes: {
-          email,
-        },
-        // optional
-        autoSignIn: true, // or SignInOptions e.g { authFlowType: "USER_SRP_AUTH" }
-      },
     });
 
-    console.log(userId);
+    console.log(response);
   } catch (error) {
     console.log("error signing up:", error);
   }
