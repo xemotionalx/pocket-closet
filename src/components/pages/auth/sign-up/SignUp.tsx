@@ -1,11 +1,12 @@
 import { SafeAreaView, Text } from "react-native";
-import styles from "./sign-up.module.css";
 import { Button, Input } from "tamagui";
 import { Controller, useForm } from "react-hook-form";
-import { Link } from "expo-router";
-import handleSignUp from "../../../../api/handleSignUp";
 
-const isValidEmail = (email) =>
+import handleSignUp from "@api/handleSignUp";
+
+import styles from "./sign-up.module.css";
+
+const isValidEmail = (email: string) =>
   // eslint-disable-next-line no-useless-escape
   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
     email
@@ -33,7 +34,7 @@ export const SignUp = () => {
     handleSignUp({ password: data.password, email: data.email });
   };
 
-  const handleEmailValidation = (email) => {
+  const handleEmailValidation = (email: string) => {
     console.log("ValidateEmail was called with", email);
 
     const isValid = isValidEmail(email);
@@ -111,7 +112,6 @@ export const SignUp = () => {
       >
         create account
       </Button>
-      {/* <Link href="/closet">go to my closet</Link> */}
     </SafeAreaView>
   );
 };
