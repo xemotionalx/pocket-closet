@@ -2,20 +2,10 @@ import { SafeAreaView, Text } from "react-native";
 import { Button, Input } from "tamagui";
 import { Controller, useForm } from "react-hook-form";
 
-import handleSignUp from "@api/handleSignUp";
+import handleSignUp, { SignUpParameters } from "./handleSignUp";
 
 import styles from "./sign-up.module.css";
-
-const isValidEmail = (email: string) =>
-  // eslint-disable-next-line no-useless-escape
-  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-    email
-  );
-
-type FormDataType = {
-  email: string;
-  password: string;
-};
+import { isValidEmail } from "@utils/isValidEmail";
 
 export const SignUp = () => {
   const {
@@ -29,7 +19,7 @@ export const SignUp = () => {
     },
   });
 
-  const onSubmit = (data: FormDataType) => {
+  const onSubmit = (data: SignUpParameters) => {
     console.log(data);
     handleSignUp({ password: data.password, email: data.email });
   };
@@ -50,6 +40,7 @@ export const SignUp = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Sign Up</Text>
       <Controller
         name="email"
         control={control}
@@ -64,10 +55,12 @@ export const SignUp = () => {
             borderStyle="solid"
             backgroundColor={errors.email ? "#f7b7da" : "white"}
             borderColor={errors.email ? "#eb3498" : "black"}
+            keyboardType="email-address"
             focusStyle={{
               borderColor: errors.email ? "#eb3498" : "purple",
               backgroundColor: "white",
             }}
+            textContentType="emailAddress"
           />
         )}
       />
@@ -98,6 +91,7 @@ export const SignUp = () => {
               backgroundColor: "white",
             }}
             secureTextEntry={true}
+            textContentType="password"
           />
         )}
       />

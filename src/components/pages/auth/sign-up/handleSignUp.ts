@@ -1,7 +1,7 @@
 import { Auth } from "aws-amplify";
 import { router } from "expo-router";
 
-type SignUpParameters = {
+export type SignUpParameters = {
   password: string;
   email: string;
 };
@@ -11,9 +11,15 @@ async function handleSignUp({ password, email }: SignUpParameters) {
     const response = await Auth.signUp({
       username: email,
       password,
+      attributes: {
+        email,
+      },
+      autoSignIn: {
+        enabled: true,
+      },
     });
 
-    router.replace("/lauth/confirmation");
+    router.replace({ pathname: "/auth/confirm", params: { email } });
 
     console.log(response);
   } catch (error) {

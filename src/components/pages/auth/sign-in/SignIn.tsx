@@ -1,20 +1,11 @@
 import { SafeAreaView, Text } from "react-native";
-import styles from "./sign-in.module.css";
 import { Button, Input } from "tamagui";
 import { Controller, useForm } from "react-hook-form";
-import { Link, router } from "expo-router";
-import handleSignUp from "../../../../api/handleSignUp";
 
-const isValidEmail = (email) =>
-  // eslint-disable-next-line no-useless-escape
-  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-    email
-  );
+import { isValidEmail } from "@utils/isValidEmail";
 
-type FormDataType = {
-  email: string;
-  password: string;
-};
+import styles from "./sign-up.module.css";
+import { SignInParameters, handleSignIn } from "./handleSignIn";
 
 export const SignIn = () => {
   const {
@@ -28,12 +19,12 @@ export const SignIn = () => {
     },
   });
 
-  const onSubmit = (data: FormDataType) => {
+  const onSubmit = (data: SignInParameters) => {
     console.log(data);
-    handleSignUp({ password: data.password, email: data.email });
+    handleSignIn({ password: data.password, email: data.email });
   };
 
-  const handleEmailValidation = (email) => {
+  const handleEmailValidation = (email: string) => {
     console.log("ValidateEmail was called with", email);
 
     const isValid = isValidEmail(email);
@@ -49,6 +40,7 @@ export const SignIn = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Sign In</Text>
       <Controller
         name="email"
         control={control}
@@ -63,10 +55,12 @@ export const SignIn = () => {
             borderStyle="solid"
             backgroundColor={errors.email ? "#f7b7da" : "white"}
             borderColor={errors.email ? "#eb3498" : "black"}
+            keyboardType="email-address"
             focusStyle={{
               borderColor: errors.email ? "#eb3498" : "purple",
               backgroundColor: "white",
             }}
+            textContentType="emailAddress"
           />
         )}
       />
@@ -96,6 +90,8 @@ export const SignIn = () => {
               borderColor: errors.password ? "#eb3498" : "purple",
               backgroundColor: "white",
             }}
+            secureTextEntry={true}
+            textContentType="password"
           />
         )}
       />
@@ -110,7 +106,6 @@ export const SignIn = () => {
       >
         create account
       </Button>
-      {/* <Link href="/closet">go to my closet</Link> */}
     </SafeAreaView>
   );
 };
